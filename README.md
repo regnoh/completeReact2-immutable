@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 转： [immutable.js 以及在 react+redux 项目中的实践](https://juejin.im/post/5948985ea0bb9f006bed7472)
 
-## Available Scripts
+- [redux-immutable](https://github.com/gajus/redux-immutable)
+- [Immutable.js](https://immutable-js.github.io/immutable-js/)
 
-In the project directory, you can run:
+redux-immutable is used to create an equivalent function of Redux `combineReducers` that works with `Immutable.js` state.
 
-### `yarn start`
+#### 1. 为什么使用 immutable
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. 原生 js 引用类型为 mutable
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+   - 优点：频繁的操作数据都是在原对象的基础上修改，不会浪费内存
+   - 缺点：不可控，假设一个对象在多处用到，在某一处不小心修改了数据，其他地方很难预见到数据是如何改变的
 
-### `yarn test`
+2. Redux 要求状态是 immutable
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   即需要在新对象上做修改。(浅拷贝, 深拷贝)
 
-### `yarn build`
+   reducer：{...state, user: {...payload}}
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   缺点：造成更多的性能问题以及内存浪费
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### 2. immutable 对象
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. immutable.js 主要有三大特性：
 
-### `yarn eject`
+   1. Persistent data structure （持久化数据结构）
+   2. structural sharing （结构共享）
+   3. support lazy operation （惰性操作）
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### 3. install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+tyarn add immutable redux-immutable redux react-redux
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### 4. 常用 api 介绍
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```js
+// rootReducer
+import { combineReducers } from "redux-immutable";
+// reducer
+import { fromJS } from "immutable";
+// const initialState = {
+//   count: 10
+// }
+const initialState = fromJS({
+  count: 10
+});
+// return {...state, count: state.count - 1}
+return state.updateIn(["count"], v => v - 1);
+// app
+const mapStateToProps = state => ({
+  // count: state.counter.count
+  count: state.getIn(["counter", "count"])
+});
+```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+fromJS
+toJS
+update
+updateIn
+get
+getIn
+set
+setIn
+数据类型
+Map
+List
+```
