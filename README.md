@@ -31,5 +31,41 @@ redux-immutable is used to create an equivalent function of Redux `combineReduce
 #### 3. install
 
 ```
-tyarn add immutable redux-immutable
+tyarn add immutable redux-immutable redux react-redux
+```
+
+#### 4. 常用 api 介绍
+
+```js
+// rootReducer
+import { combineReducers } from "redux-immutable";
+// reducer
+import { fromJS } from "immutable";
+// const initialState = {
+//   count: 10
+// }
+const initialState = fromJS({
+  count: 10
+});
+// return {...state, count: state.count - 1}
+return state.updateIn(["count"], v => v - 1);
+// app
+const mapStateToProps = state => ({
+  // count: state.counter.count
+  count: state.getIn(["counter", "count"])
+});
+```
+
+```
+fromJS
+toJS
+update
+updateIn
+get
+getIn
+set
+setIn
+数据类型
+Map
+List
 ```
