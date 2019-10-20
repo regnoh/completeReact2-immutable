@@ -69,3 +69,18 @@ setIn
 Map
 List
 ```
+
+- Should I need to put yarn.lock in .gitignore?
+
+```
+You should add yarn.lock to your git, don't ignore it.
+See https://yarnpkg.com/en/docs/migrating-from-npm
+When you run either yarn or yarn add <package>, Yarn will generate a yarn.lock file within the root directory of your package. You don’t need to read or understand this file - just check it into source control. When other people start using Yarn instead of npm, the yarn.lock file will ensure that they get precisely the same dependencies as you have.
+```
+
+### [mobx](https://cn.mobx.js.org/)
+
+```
+tyarn add mobx mobx-react
+
+```
