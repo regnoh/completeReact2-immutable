@@ -274,7 +274,7 @@
     "@babel/helper-create-class-features-plugin" "^7.5.5"
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-proposal-decorators@7.6.0":
+"@babel/plugin-proposal-decorators@7.6.0", "@babel/plugin-proposal-decorators@^7.6.0":
   version "7.6.0"
   resolved "https://registry.npm.taobao.org/@babel/plugin-proposal-decorators/download/@babel/plugin-proposal-decorators-7.6.0.tgz#6659d2572a17d70abd68123e89a12a43d90aa30c"
   integrity sha1-ZlnSVyoX1wq9aBI+iaEqQ9kKoww=
@@ -3070,6 +3070,13 @@ cssstyle@^1.0.0, cssstyle@^1.1.1:
   dependencies:
     cssom "0.3.x"
 
+customize-cra@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.npm.taobao.org/customize-cra/download/customize-cra-0.8.0.tgz#011e65fde9e443733668551740b76e3eefe95822"
+  integrity sha1-AR5l/enkQ3M2aFUXQLduPu/pWCI=
+  dependencies:
+    lodash.flow "^3.5.0"
+
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/cyclist/download/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -3405,7 +3412,7 @@ dotenv-expand@5.1.0:
   resolved "https://registry.npm.taobao.org/dotenv-expand/download/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
   integrity sha1-P7rwIL/XlIhAcuomsel5HUWmKfA=
 
-dotenv@6.2.0:
+dotenv@6.2.0, dotenv@^6.2.0:
   version "6.2.0"
   resolved "https://registry.npm.taobao.org/dotenv/download/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
   integrity sha1-lBwEEFNdlCyL7PKNPzV9vZ1HYGQ=
@@ -4560,11 +4567,6 @@ hmac-drbg@^1.0.0:
     hash.js "^1.0.3"
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
-
-hoist-non-react-statics@^2.3.1:
-  version "2.5.5"
-  resolved "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
-  integrity sha1-xZA89AnA39kI84jmGdhrnBF0y0c=
 
 hoist-non-react-statics@^3.3.0:
   version "3.3.0"
@@ -6002,6 +6004,11 @@ lodash._reinterpolate@^3.0.0:
   resolved "https://registry.npm.taobao.org/lodash._reinterpolate/download/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
+lodash.flow@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.npm.taobao.org/lodash.flow/download/lodash.flow-3.5.0.tgz#87bf40292b8cf83e4e8ce1a3ae4209e20071675a"
+  integrity sha1-h79AKSuM+D5OjOGjrkIJ4gBxZ1o=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -6353,24 +6360,12 @@ mobx-react-lite@^1.4.2:
   resolved "https://registry.npm.taobao.org/mobx-react-lite/download/mobx-react-lite-1.5.0.tgz#a5867fa1114b19056cf8159e8d64766596ae85a0"
   integrity sha1-pYZ/oRFLGQVs+BWejWR2ZZauhaA=
 
-mobx-react@^4.4.2:
-  version "4.4.3"
-  resolved "https://registry.npm.taobao.org/mobx-react/download/mobx-react-4.4.3.tgz#baa9ec41165ee35ae7b9df19bca10190f36f117e"
-  integrity sha1-uqnsQRZe41rnud8ZvKEBkPNvEX4=
-  dependencies:
-    hoist-non-react-statics "^2.3.1"
-
 mobx-react@^6.1.4:
   version "6.1.4"
   resolved "https://registry.npm.taobao.org/mobx-react/download/mobx-react-6.1.4.tgz#818e7991c321c05bd9b8156d94be17dad165501e"
   integrity sha1-gY55kcMhwFvZuBVtlL4X2tFlUB4=
   dependencies:
     mobx-react-lite "^1.4.2"
-
-mobx@^3.5.1:
-  version "3.6.2"
-  resolved "https://registry.npm.taobao.org/mobx/download/mobx-3.6.2.tgz#fb9f5ff5090539a1ad54e75dc4c098b602693320"
-  integrity sha1-+59f9QkFOaGtVOddxMCYtgJpMyA=
 
 mobx@^5.14.2:
   version "5.14.2"
@@ -8107,6 +8102,15 @@ react-app-polyfill@^1.0.4:
     regenerator-runtime "0.13.3"
     whatwg-fetch "3.0.0"
 
+react-app-rewired@^2.1.3:
+  version "2.1.3"
+  resolved "https://registry.npm.taobao.org/react-app-rewired/download/react-app-rewired-2.1.3.tgz#5ae8583ecc9f9f968d40b735d2abbe871378a52f"
+  integrity sha1-WuhYPsyfn5aNQLc10qu+hxN4pS8=
+  dependencies:
+    cross-spawn "^6.0.5"
+    dotenv "^6.2.0"
+    semver "^5.6.0"
+
 react-dev-utils@^9.1.0:
   version "9.1.0"
   resolved "https://registry.npm.taobao.org/react-dev-utils/download/react-dev-utils-9.1.0.tgz#3ad2bb8848a32319d760d0a84c56c14bdaae5e81"
@@ -8138,7 +8142,7 @@ react-dev-utils@^9.1.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.10.2, react-dom@^16.2.0:
+react-dom@^16.10.2:
   version "16.10.2"
   resolved "https://registry.npm.taobao.org/react-dom/download/react-dom-16.10.2.tgz#4840bce5409176bc3a1f2bd8cb10b92db452fda6"
   integrity sha1-SEC85UCRdrw6HyvYyxC5LbRS/aY=
@@ -8157,16 +8161,6 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.10.2"
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.10.2.tgz#984120fd4d16800e9a738208ab1fba422d23b5ab"
   integrity sha1-mEEg/U0WgA6ac4IIqx+6Qi0jtas=
-
-react-mobx@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.npm.taobao.org/react-mobx/download/react-mobx-0.0.4.tgz#c34d8bb61f712859022f3de2f67cab50dca8ca7d"
-  integrity sha1-w02Lth9xKFkCLz3i9nyrUNyoyn0=
-  dependencies:
-    mobx "^3.5.1"
-    mobx-react "^4.4.2"
-    react "^16.2.0"
-    react-dom "^16.2.0"
 
 react-redux@^7.1.1:
   version "7.1.1"
@@ -8241,7 +8235,7 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
-react@^16.10.2, react@^16.2.0:
+react@^16.10.2:
   version "16.10.2"
   resolved "https://registry.npm.taobao.org/react/download/react-16.10.2.tgz#a5ede5cdd5c536f745173c8da47bda64797a4cf0"
   integrity sha1-pe3lzdXFNvdFFzyNpHvaZHl6TPA=
