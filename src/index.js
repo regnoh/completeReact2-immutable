@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Provider } from "mobx-react";
+import counterStore from "./store";
 import App from "./App";
-import { Provider } from "react-redux";
-import store from "./store";
+
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider counter={counterStore}>
     <App />
   </Provider>,
   document.querySelector("#root")

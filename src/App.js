@@ -1,22 +1,16 @@
-import React from "react";
-import { decrease } from "./actions";
-import { connect } from "react-redux";
-const App = ({ count, decrease }) => {
-  const onDecrease = () => {
-    decrease();
-  };
-  return (
-    <div>
-      <button onClick={onDecrease}>-</button>
-      <span>{count}</span>
-    </div>
-  );
-};
-const mapStateToProps = state => ({
-  count: state.getIn(["counter", "count"])
-});
-
-export default connect(
-  mapStateToProps,
-  { decrease }
-)(App);
+import React, { Component } from "react";
+import { CounterButton, CounterDisplay } from "./components";
+import { observer, inject } from "mobx-react";
+@inject("counter")
+class App extends Component {
+  render() {
+    const { decrease } = this.props.counter;
+    return (
+      <>
+        <CounterButton onClick={decrease}>-</CounterButton>
+        <CounterDisplay />
+      </>
+    );
+  }
+}
+export default App;
