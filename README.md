@@ -82,7 +82,6 @@ When you run either yarn or yarn add <package>, Yarn will generate a yarn.lock f
 
 ```
 tyarn add mobx mobx-react
-
 ```
 
 ### [mobx vs redux](https://www.educba.com/mobx-vs-redux/)
@@ -93,3 +92,123 @@ tyarn add mobx mobx-react
 | Data store  | > 1   | 1     |
 | Application | small | large |
 | Scalable    | less  | more  |
+
+1. store/index.js
+
+```js
+import { observable, computed, action } from "mobx";
+
+class Counter {
+  name = "Counter App";
+  @observable count = 100;
+  @computed get doubleCount() {
+    return this.count * 2;
+  }
+  @action.bound
+  decrease() {
+    this.count--;
+  }
+}
+const counterStore = new Counter();
+export default counterStore;
+```
+
+2. index.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "mobx-react";
+import counterStore from "./store";
+import App from "./App";
+
+ReactDOM.render(
+  <Provider counter={counterStore}>
+    <App />
+  </Provider>,
+  document.querySelector("#root")
+);
+```
+
+3. App.js
+
+```js
+import React, { Component } from "react";
+import { CounterButton, CounterDisplay } from "./components";
+import { observer, inject } from "mobx-react";
+@inject("counter")
+class App extends Component {
+  render() {
+    const { decrease } = this.props.counter;
+    return (
+      <>
+        <CounterButton onClick={decrease}>-</CounterButton>
+        <CounterDisplay />
+      </>
+    );
+  }
+}
+export default App;
+```
+
+4. components/CounterDisplay/index.js
+
+```js
+import React, { Component } from "react";
+import { observer, inject } from "mobx-react";
+@inject("counter")
+@observer
+class CounterDisplay extends Component {
+  render() {
+    const { doubleCount, count } = this.props.counter;
+
+    return (
+      <div>
+        <p>原值： {count}</p>
+        <p>*2: {doubleCount}</p>
+      </div>
+    );
+  }
+}
+export default CounterDisplay;
+```
+
+4. 不想 inject 整个 counterStore 时， 可如下
+
+```js
+import React, { Component } from "react";
+import { observer, inject } from "mobx-react";
+@inject(store => {
+  const { count, doubleCount } = store.counter;
+  return {
+    count,
+    doubleCount
+  };
+})
+@observer
+class CounterDisplay extends Component {
+  render() {
+    const { doubleCount, count } = this.props;
+
+    return (
+      <div>
+        <p>原值： {count}</p>
+        <p>*2: {doubleCount}</p>
+      </div>
+    );
+  }
+}
+export default CounterDisplay;
+```
+
+5. CounterButton
+
+```js
+import React, { Component } from "react";
+
+export default class CounterButton extends Component {
+  render() {
+    return <button onClick={this.props.onClick}>{this.props.children}</button>;
+  }
+}
+```

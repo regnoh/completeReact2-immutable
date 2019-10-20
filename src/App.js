@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { CounterButton, CounterDisplay } from "./components";
-import counterStore from "./store";
-// window.counterStore = counterStore;
+import { observer, inject } from "mobx-react";
+@inject("counter")
 class App extends Component {
   render() {
+    const { decrease } = this.props.counter;
     return (
       <>
-        <CounterButton onClick={counterStore.decrease}>-</CounterButton>
-        <CounterDisplay counterStore={counterStore} />
+        <CounterButton onClick={decrease}>-</CounterButton>
+        <CounterDisplay />
       </>
     );
   }
