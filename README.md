@@ -84,3 +84,12 @@ When you run either yarn or yarn add <package>, Yarn will generate a yarn.lock f
 tyarn add mobx mobx-react
 
 ```
+
+### [mobx vs redux](https://www.educba.com/mobx-vs-redux/)
+
+| diff        | mobx  | redux |
+| ----------- | ----- | ----- |
+| Programmed  | js    | es6   |
+| Data store  | > 1   | 1     |
+| Application | small | large |
+| Scalable    | less  | more  |
